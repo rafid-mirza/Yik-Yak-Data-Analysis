@@ -24,7 +24,7 @@ df = pandas.read_csv("database.csv", names=colnames, encoding='latin-1')
 print(df)
 
 import cohere  
-co = cohere.Client('5H78yE5Mm7GM6S6IjsHNtLEDrIYP4pXFcJGuQGJy')
+co = cohere.Client('AdejHg0jqr05TQpHWauZ6J4RbfKrkFXDaoTkMOSP')
 responses = {}
 
 # test = df.iloc[0]["Yak"]
@@ -48,7 +48,7 @@ for index, row in df.iterrows():
      asyncio.run(wait_60_seconds())
      count = 0
 
-  prompt = "Rank this statement as one of the six basic emotions (sadness, happiness, fear, anger, surprise and disgust), outputting only one of those six words: " + row['Yak']
+  prompt = "I will give you a statement. I need you to return only one word which expresses the sentiment of the statement using the following words: admiration, amusement, anger, annoyance, approval, caring, confusion, curiosity, desire, disappointment, disapproval, disgust, embarrassment, excitement, fear, gratitude, grief, joy, love, nervousness, optimism, pride, realization, relief, remorse, sadness, surprise, neutral. The statement is: " +  + row['Yak'] + "DO NOT EXPLAIN YOUR ANSWER OR GIVE ME MORE THAN ONE WORD."
   try:
     response = co.generate(  
           model='command-nightly',  
